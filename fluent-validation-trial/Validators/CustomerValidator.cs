@@ -11,11 +11,14 @@ namespace fluent_validation_trial.Validators
             RuleFor(x => x.Title).MinimumLength(2).WithMessage("Title must be at least 2 characters");
             RuleFor(x => x.Title).Custom((x, y) =>
               {
-                  if(x.Contains("M"))
+                  if (x.Contains("M"))
                   {
                       y.AddFailure("Title contains the letter M!");
                   }
               });
+
+            RuleFor(x => x.MaritalStatus).NotEmpty().WithMessage("Sorry but Marital Status is not null");
+            RuleFor(x => x.MaritalStatus).IsInEnum().WithMessage("Not a valid value for Marital Status!");
         }
     }
 }
