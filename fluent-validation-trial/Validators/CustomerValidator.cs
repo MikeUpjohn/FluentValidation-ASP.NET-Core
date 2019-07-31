@@ -7,18 +7,19 @@ namespace fluent_validation_trial.Validators
     {
         public CustomerValidator()
         {
-            RuleFor(x => x.Title).NotEmpty().WithMessage("Title is a required field.");
-            RuleFor(x => x.Title).MinimumLength(2).WithMessage("Title must be at least 2 characters");
-            RuleFor(x => x.Title).Custom((x, y) =>
-              {
-                  if (x.Contains("M"))
-                  {
-                      y.AddFailure("Title contains the letter M!");
-                  }
-              });
-
-            RuleFor(x => x.MaritalStatus).NotEmpty().WithMessage("Sorry but Marital Status is not null");
-            RuleFor(x => x.MaritalStatus).IsInEnum().WithMessage("Not a valid value for Marital Status!");
+            RuleFor(x => x.Title)
+                .NotEmpty().WithMessage("Title is a required field.")
+                .MinimumLength(2).WithMessage("Title must be at least 2 characters");
+            RuleFor(x => x.FirstName)
+                .NotEmpty().WithMessage("First Name is a required field.")
+                .MaximumLength(255).WithMessage("First Name must be less than 255 characters.");
+            RuleFor(x => x.Surname).
+                NotEmpty().WithMessage("Surname is a required field.")
+                .MaximumLength(255).WithMessage("Surname must be less than 255 characters.");
+            RuleFor(x => x.Age)
+                .NotEmpty().WithMessage("Age is a required field")
+                .GreaterThan(18).WithMessage("You must be at least 18.");
+            RuleFor(x => x.MaritalStatus).NotEmpty().WithMessage("Marital Status is a required field.");
         }
     }
 }
