@@ -32,7 +32,7 @@ namespace fluent_validation_trial
                 .AddFluentValidation(x =>
                 {
                     x.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                    x.RegisterValidatorsFromAssemblyContaining<Customer>();
+                    x.RegisterValidatorsFromAssemblyContaining<Applicant>();
                     x.ImplicitlyValidateChildProperties = true;
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

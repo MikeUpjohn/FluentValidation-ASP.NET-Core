@@ -10,9 +10,9 @@ namespace fluent_validation_trial.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetCustomerData(Customer customer)
+        public ActionResult<IEnumerable<string>> GetCustomerData(Applicant applicant)
         {
-            return Ok(customer);
+            return Ok(applicant);
         }
     }
 }
