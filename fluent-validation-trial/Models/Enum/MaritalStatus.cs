@@ -2,9 +2,9 @@
 {
     public enum MaritalStatus
     {
-        Mr,
-        Mrs,
-        Ms,
-        Dr
+        Single,
+        Married,
+        Divorced,
+        Widowed
     }
 }

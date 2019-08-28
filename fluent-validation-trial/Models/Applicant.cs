@@ -11,8 +11,9 @@ namespace fluent_validation_trial.Models
         public string Surname { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
-        public MaritalStatus MaritalStatus { get; set; }
-        public Nationality Nationality { get; set; }
+        public MaritalStatus? MaritalStatus { get; set; }
+        public Nationality? Nationality { get; set; }
+        public bool? HasChildren { get; set; }
         public int? NumberOfChildren { get; set; }
         public int? RetirementAge { get; set; }
         public string Telephone { get; set; }
