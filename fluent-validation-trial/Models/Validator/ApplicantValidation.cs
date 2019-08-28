@@ -19,12 +19,8 @@ namespace fluent_validation_trial.Models.Validator
                 .Length(1, 255).WithMessage("Surname is a required field.");
 
             RuleFor(a => a.DateOfBirth)
-                .NotEmpty().WithMessage("Date Of Birth is a required field")
-                .Custom((dateOfBirth, context) =>
-                {
-                    var error = ApplicantValidatorRules.IsValidAge(dateOfBirth, 25, 60);
-                    if (error != null) context.AddFailure(error);
-                });
+                .NotEmpty().WithMessage("Date of Birth is a required field.")
+                .Must(ApplicantValidatorRules.IsValidAgeV2).WithMessage("Invalid Date of birth");
 
             RuleFor(a => a.Email)
                 .NotEmpty().WithMessage("Email is a required field")
@@ -39,9 +35,22 @@ namespace fluent_validation_trial.Models.Validator
             RuleFor(a => a.HasChildren)
                 .NotEmpty().WithMessage("Has Children is required");
 
+            //RuleFor(a => a.NumberOfChildren)
+            //    .NotEmpty()
+            //    .WithMessage("Number of children is a required field.");
+
+            //When(a=>a.HasChildren == true, () =>
+            //{
+            //    RuleFor(a => a.NumberOfChildren)
+            //        .NotEmpty().WithMessage("Number of Children is a required field")
+            //        .GreaterThanOrEqualTo(1).WithMessage("Number of Children must be at least 1");
+            //});
+
             RuleFor(a => a.NumberOfChildren)
                 .NotEmpty()
-                .WithMessage("Number of children is a required field.");
+                .WithMessage("Number of Children is a required field").When(a => a.HasChildren == true)
+                .GreaterThanOrEqualTo(1)
+                .WithMessage("Number of Children must be at least 1").When(a => a.HasChildren == true);
 
             RuleFor(a => a.RetirementAge)
                 .NotEmpty()
@@ -54,7 +63,6 @@ namespace fluent_validation_trial.Models.Validator
 
             RuleFor(a => a.AddressHistory)
                 .NotNull().WithMessage("Address History data must exist");
-
         }
     }
 }
