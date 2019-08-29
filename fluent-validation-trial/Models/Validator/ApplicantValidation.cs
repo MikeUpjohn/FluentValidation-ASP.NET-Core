@@ -7,7 +7,7 @@ namespace fluent_validation_trial.Models.Validator
         public ApplicantValidation()
         {
             RuleFor(a => a.Title)
-                .NotEmpty().WithMessage("Title is a required field.")
+                .NotEmpty()
                 .Length(2, 255).WithMessage("Title is not the correct length.");
 
             RuleFor(a => a.Forename)
@@ -20,7 +20,7 @@ namespace fluent_validation_trial.Models.Validator
 
             RuleFor(a => a.DateOfBirth)
                 .NotEmpty().WithMessage("Date of Birth is a required field.")
-                .Must(ApplicantValidatorRules.IsValidAgeV2).WithMessage("Invalid Date of birth");
+                .Must(x => ApplicantValidatorRules.IsValidAgeV2(x.Date, 25, 60)).WithMessage("Invalid Date of birth");
 
             RuleFor(a => a.Email)
                 .NotEmpty().WithMessage("Email is a required field")
@@ -33,7 +33,7 @@ namespace fluent_validation_trial.Models.Validator
                 .NotEmpty().WithMessage("Nationality is a required field.");
 
             RuleFor(a => a.HasChildren)
-                .NotEmpty().WithMessage("Has Children is required");
+                .NotNull().WithMessage("Has Children is required");
 
             //RuleFor(a => a.NumberOfChildren)
             //    .NotEmpty()

@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "9677eeea-fc1e-42fe-b4d2-f1f61c201867",
+		"name": "Fluent Validation Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Example",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Mr\",\n\t\"forename\": \"Mike\",\n\t\"surname\": \"Upjohn\",\n\t\"email\": \"mike@mojomortgages.com\",\n\t\"telephone\": \"+441625123456\",\n\t\"dateOfBirth\": \"2009-08-28\",\n\t\"hasChildren\": true,\n\t\"numberOfChildren\": 2,\n\t\"nationality\": 1,\n\t\"maritalStatus\": 1,\n\t\"retirementAge\": 16,\n\t\"addressHistory\": [{}]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:59430/api/test/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "59430",
+					"path": [
+						"api",
+						"test",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

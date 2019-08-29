@@ -14,11 +14,8 @@ namespace fluent_validation_trial.Models.Validator
             return null;
         }
 
-        public static bool IsValidAgeV2(DateTime date)
+        public static bool IsValidAgeV2(DateTime date, int minAge, int maxAge)
         {
-            const int minAge = 25;
-            const int maxAge = 60;
-
             if (date >= DateTime.Today) return false;
             if (date > DateTime.Today.AddYears(-minAge)) return false;
             if (date < DateTime.Today.AddYears(-maxAge)) return false;
